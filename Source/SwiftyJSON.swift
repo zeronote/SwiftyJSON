@@ -1467,6 +1467,8 @@ extension JSON: Codable {
                     object = try? container.decode(uint32Type)
                 case let uint64Type as UInt64.Type:
                     object = try? container.decode(uint64Type)
+                case let decimalType as Decimal.Type:
+                    object = try? container.decode(decimalType)
                 case let doubleType as Double.Type:
                     object = try? container.decode(doubleType)
                 case let stringType as String.Type:
@@ -1507,6 +1509,8 @@ extension JSON: Codable {
             try container.encode(uint32Value)
         case let uint64Value as UInt64:
             try container.encode(uint64Value)
+        case let decimal as Decimal:
+            try container.encode(decimal)
         case let doubleValue as Double:
             try container.encode(doubleValue)
         case let boolValue as Bool:
